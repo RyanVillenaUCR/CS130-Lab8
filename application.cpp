@@ -120,6 +120,10 @@ void Add_Particles(size_t n) {
 
         // initial color
         p.color = YELLOW;
+
+
+
+        particles.push_back(p);
     }
 }
 
