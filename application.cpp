@@ -38,7 +38,7 @@ struct Particle {
         position += h * velocity;
 
         //Then update velocity
-        velocity += force * (h / m);
+        velocity += force * (h / mass);
     }
 
     // reset force to 0 vector
