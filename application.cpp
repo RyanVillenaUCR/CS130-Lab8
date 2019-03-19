@@ -22,6 +22,15 @@ enum { NONE, AMBIENT, DIFFUSE, SPECULAR, NUM_MODES };
 void draw_grid(int dim);
 void draw_obj(obj *o, const gl_image_texture_map& textures);
 
+struct Particle {
+
+    vec3 position;
+    vec3 velocity;
+    float mass;
+    vec3 color;
+    vec3 force;
+};
+
 void set_pixel(int x, int y, float col[3])
 {
     // write a 1x1 block of pixels of color col to framebuffer
