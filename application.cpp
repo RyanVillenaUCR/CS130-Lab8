@@ -87,6 +87,14 @@ float map_to_range(float x, float old_lo, float old_hi, float new_lo, float new_
     return x;
 }
 
+float random(float lo_bound = 0.0f, float hi_bound = 1.0f) {
+
+    return map_to_range(
+        rand(),
+        0.0f, static_cast<float> (RAND_MAX),    // range of rand()
+        lo_bound, hi_bound);                    // desired range
+}
+
 void set_pixel(int x, int y, float col[3])
 {
     // write a 1x1 block of pixels of color col to framebuffer
