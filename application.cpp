@@ -39,6 +39,32 @@ struct Particle {
         //Then update velocity
         velocity += force * (h / m);
     }
+
+    // reflect particle on ground,
+    // apply damping and restitution
+    void Handle_Collision(float damping, float coeff_restitution) {
+
+        // reflect particle on ground if necessary
+        if (position[1] < 0) {
+
+            // Bring particle to surface
+            position[1] = 0;
+
+            // Reflect velocity, accounting for bounciness
+            velocity *= -1 * coeff_restitution;
+        }
+
+        // If particle going down,
+        // apply damping forces
+        if (velocity[1] < 0) {
+
+            velocity[0] *= damping;
+            velocity[1] *= damping;
+        }
+    }
+
+
+
 };
 
 void set_pixel(int x, int y, float col[3])
