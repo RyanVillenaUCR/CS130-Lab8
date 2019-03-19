@@ -76,6 +76,17 @@ struct Particle {
 
 vector<Particle> particles;
 
+float map_to_range(float x, float old_lo, float old_hi, float new_lo, float new_hi) {
+
+    x -= old_lo;                // bring lo down to 0
+    x /= (old_hi - old_lo);     // map to range 0.0 <= x <= 1
+
+    x *= (new_hi - new_lo);     // map to range new_lo <= x <= new_hi
+    x += new_lo;                // bring low up to new_lo
+
+    return x;
+}
+
 void set_pixel(int x, int y, float col[3])
 {
     // write a 1x1 block of pixels of color col to framebuffer
