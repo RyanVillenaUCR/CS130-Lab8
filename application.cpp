@@ -20,6 +20,8 @@
 using namespace std;
 enum { NONE, AMBIENT, DIFFUSE, SPECULAR, NUM_MODES };
 
+const vec3 YELLOW = { 255.0f, 255.0f, 0.0f };
+
 void draw_grid(int dim);
 void draw_obj(obj *o, const gl_image_texture_map& textures);
 
@@ -93,6 +95,32 @@ float random(float lo_bound = 0.0f, float hi_bound = 1.0f) {
         rand(),
         0.0f, static_cast<float> (RAND_MAX),    // range of rand()
         lo_bound, hi_bound);                    // desired range
+}
+
+// Generates n random particles,
+// and appends to particles
+void Add_Particles(size_t n) {
+
+    for (size_t i = 0; i < n; i++) {
+
+        Particle p;
+
+        // mass
+        p.mass = 1.0f;
+
+        // start position
+        p.position[0] = random(0.0f, 0.2f);
+        p.position[1] = random(0.05f);
+        p.position[2] = random(0.0f, 0.2f);
+
+        // start velocity
+        p.velocity[0] = 10 * p.position[0];
+        p.velocity[1] = random(1.0f, 10.0f);
+        p.velocity[2] = 10 * p.position[2];
+
+        // initial color
+        p.color = YELLOW;
+    }
 }
 
 void set_pixel(int x, int y, float col[3])
