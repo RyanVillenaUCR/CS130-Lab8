@@ -20,8 +20,6 @@
 using namespace std;
 enum { NONE, AMBIENT, DIFFUSE, SPECULAR, NUM_MODES };
 
-vector<Particle> particles;
-
 void draw_grid(int dim);
 void draw_obj(obj *o, const gl_image_texture_map& textures);
 
@@ -75,6 +73,8 @@ struct Particle {
 
 
 };
+
+vector<Particle> particles;
 
 void set_pixel(int x, int y, float col[3])
 {
