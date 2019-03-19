@@ -29,6 +29,16 @@ struct Particle {
     float mass;
     vec3 color;
     vec3 force;
+
+    // update v and x with a Foward Euler Step
+    void Euler_Step(float h) {
+
+        //Update position
+        position += h * velocity;
+
+        //Then update velocity
+        velocity += force * (h / m);
+    }
 };
 
 void set_pixel(int x, int y, float col[3])
