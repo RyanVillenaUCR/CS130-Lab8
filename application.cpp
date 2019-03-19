@@ -40,6 +40,12 @@ struct Particle {
         velocity += force * (h / m);
     }
 
+    // reset force to 0 vector
+    void Reset_Forces() {
+
+        force.make_zero();
+    }
+
     // reflect particle on ground,
     // apply damping and restitution
     void Handle_Collision(float damping, float coeff_restitution) {
