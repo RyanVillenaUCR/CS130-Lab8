@@ -5,6 +5,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <unistd.h>
+#include <vector>
 
 #ifndef __APPLE__
 #include <GL/gl.h>
@@ -18,6 +19,8 @@
 
 using namespace std;
 enum { NONE, AMBIENT, DIFFUSE, SPECULAR, NUM_MODES };
+
+vector<Particle> particles;
 
 void draw_grid(int dim);
 void draw_obj(obj *o, const gl_image_texture_map& textures);
