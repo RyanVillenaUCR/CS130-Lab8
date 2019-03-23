@@ -325,6 +325,14 @@ void application::draw_event()
 
             Particle& this_particle = particles[i];
 
+            // update duration of particle
+            this_particle.duration += h;
+
+            // if this particle has been here too long,
+            // reset it
+            if (this_particle.duration >= 4.0f)
+                this_particle.reset();
+
             // update position and velocity
             this_particle.Euler_Step(h);
 
