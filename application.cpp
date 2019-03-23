@@ -273,6 +273,7 @@ void application::draw_event()
     glEnable(GL_COLOR_MATERIAL);
     glBegin(GL_LINES);
 
+    // draw particles
     for (size_t i = 0; i < particles.size(); i++) {
 
         Particle& this_particle = particles[i];
