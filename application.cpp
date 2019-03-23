@@ -314,9 +314,12 @@ void application::draw_event()
 
     if (!paused) {
         
-        // Add more particles to the simulation
-        Add_Particles(20);
-        
+        // Add more particles to the simulation,
+        // up to a cap
+        if (particles.size() <= 7500) {
+            Add_Particles(20);
+        }
+
         // Simulate current particles
         for (size_t i = 0; i < particles.size(); i++) {
 
