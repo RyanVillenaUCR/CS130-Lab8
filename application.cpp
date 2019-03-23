@@ -20,7 +20,7 @@
 using namespace std;
 enum { NONE, AMBIENT, DIFFUSE, SPECULAR, NUM_MODES };
 
-const vec3 YELLOW = { 255.0f, 255.0f, 0.0f };
+const vec3 YELLOW(255.0f, 255.0f, 0.0f);
 
 void draw_grid(int dim);
 void draw_obj(obj *o, const gl_image_texture_map& textures);
