@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[])
 {
-    srand(time(nullptr));
+    srand(time(NULL));
 
     int width = 640;
     int height = 480;
