@@ -237,10 +237,33 @@ void application::draw_event()
         //
         //ADD NEW PARTICLES
         //
-        //
+        
+        Add_Particles(20);
+
         // SIMULATE YOUR PARTICLE HERE.
         //
-        //
+        
+        for (size_t i = 0; i < particles.size(); i++) {
+
+            Particle& this_particle = particles[i];
+
+            // update position and velocity
+            this_particle.Euler_Step(h);
+
+            // make forces zero, for some reason
+            this_particle.Reset_Forces();
+
+            // add forces
+            //this_particle.force = { 0.0f, (-1.0f) * this_particle.mass * 9.8f, 0.0f };
+            this_particle.force[0] = 0.0f;
+            this_particle.force[1] = -9.8f * this_particle.mass;
+            this_particle.force[2] = 0.0f;
+
+            // handle collisions with ground
+            this_particle.Handle_Collision(0.5, 0.5);
+
+        }
+
         //
         // UPDATE THE COLOR OF THE PARTICLE DYNAMICALLY
         //
