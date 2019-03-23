@@ -234,15 +234,11 @@ void application::draw_event()
     glLightfv(GL_LIGHT1, GL_POSITION, light_pos1);
 
     if (!paused) {
-        //
-        //ADD NEW PARTICLES
-        //
         
+        // Add more particles to the simulation
         Add_Particles(20);
-
-        // SIMULATE YOUR PARTICLE HERE.
-        //
         
+        // Simulate current particles
         for (size_t i = 0; i < particles.size(); i++) {
 
             Particle& this_particle = particles[i];
