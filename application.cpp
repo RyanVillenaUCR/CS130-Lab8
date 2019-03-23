@@ -35,6 +35,7 @@ struct Particle {
     float mass;
     vec3 color;
     vec3 force;
+    float duration;
 
     // update v and x with a Foward Euler Step
     void Euler_Step(float h) {
@@ -124,7 +125,8 @@ void Add_Particles(size_t n) {
         // initial color
         p.color = YELLOW;
 
-
+        // initial duration
+        p.duration = 0.0f;
 
         particles.push_back(p);
     }
