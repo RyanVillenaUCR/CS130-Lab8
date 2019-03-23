@@ -116,9 +116,9 @@ void Add_Particles(size_t n) {
         p.mass = 1.0f;
 
         // start position
-        p.position[0] = random(0.0f, 0.2f);
-        p.position[1] = random(0.05f);
-        p.position[2] = random(0.0f, 0.2f);
+        p.position[0] = random(-0.2f, 0.2f);
+        p.position[1] = 0.05f;
+        p.position[2] = random(-0.2f, 0.2f);
 
         // start velocity
         p.velocity[0] = 10 * p.position[0];
