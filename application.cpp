@@ -57,23 +57,26 @@ struct Particle {
     // apply damping and restitution
     void Handle_Collision(float damping, float coeff_restitution) {
 
+
         // reflect particle on ground if necessary
         if (position[1] < 0) {
 
             // Bring particle to surface
             position[1] = 0;
 
-            // Reflect velocity, accounting for bounciness
-            velocity *= -1 * coeff_restitution;
+            // If we were going down when we reflect,
+            // apply damping to the x and z velocities,
+            // and bounce y velocity upwards (accounting for restitution coeff)
+
+            if (velocity[1] < 0) {
+
+                velocity[0] *= damping;
+                velocity[1] *= -coeff_restitution;
+                velocity[2] *= damping;
+
+            }
         }
 
-        // If particle going down,
-        // apply damping forces
-        if (velocity[1] < 0) {
-
-            velocity[0] *= damping;
-            velocity[1] *= damping;
-        }
     }
 
 
