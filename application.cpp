@@ -57,6 +57,29 @@ struct Particle {
     vec3 force;
     float duration;
 
+    void reset() {
+
+        // initial position
+        position[0] = random(-0.2f, 0.2f);
+        position[1] = 0.05f;
+        position[2] = random(-0.2f, 0.2f);
+
+        // initial velocity
+        velocity[0] = 10 * position[0];
+        velocity[1] = random(1.0f, 10.0f);
+        velocity[2] = 10 * position[2];
+
+        // yellow as it comes out of the volcano
+        color = YELLOW;
+
+        // constant mass, but here just in case
+        mass = 1.0f;
+
+        force.make_zero();
+
+        duration = 0.0f;
+    }
+
     // update v and x with a Foward Euler Step
     void Euler_Step(float h) {
 
@@ -87,7 +110,6 @@ struct Particle {
             // If we were going down when we reflect,
             // apply damping to the x and z velocities,
             // and bounce y velocity upwards (accounting for restitution coeff)
-
             if (velocity[1] < 0) {
 
                 velocity[0] *= damping;
