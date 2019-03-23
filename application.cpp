@@ -208,25 +208,7 @@ void Add_Particles(size_t n) {
     for (size_t i = 0; i < n; i++) {
 
         Particle p;
-
-        // mass
-        p.mass = 1.0f;
-
-        // start position
-        p.position[0] = random(-0.2f, 0.2f);
-        p.position[1] = 0.05f;
-        p.position[2] = random(-0.2f, 0.2f);
-
-        // start velocity
-        p.velocity[0] = 10 * p.position[0];
-        p.velocity[1] = random(1.0f, 10.0f);
-        p.velocity[2] = 10 * p.position[2];
-
-        // initial color
-        p.color = YELLOW;
-
-        // initial duration
-        p.duration = 0.0f;
+        p.reset();
 
         particles.push_back(p);
     }
