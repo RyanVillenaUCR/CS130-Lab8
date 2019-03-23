@@ -272,14 +272,29 @@ void application::draw_event()
     glLineWidth(2.0);
     glEnable(GL_COLOR_MATERIAL);
     glBegin(GL_LINES);
-        //
-        //
-        // DRAW YOUR PARTICLE USING GL_LINES HERE
-        //
-        // glVertex3f(...) endpoint 1
-        // glVertex3f(...) endpoint 2
-        //
-        //
+
+    for (size_t i = 0; i < particles.size(); i++) {
+
+        Particle& this_particle = particles[i];
+        float delta_t = 0.04f;
+
+        glColor3f(
+            this_particle.color[0],
+            this_particle.color[1],
+            this_particle.color[2]);
+
+        glVertex3f(
+            this_particle.position[0],    // x0
+            this_particle.position[1],    // y0
+            this_particle.position[2]);   // z0
+
+        glVertex3f(
+            this_particle.position[0] + (delta_t * this_particle.velocity[0]),
+            this_particle.position[1] + (delta_t * this_particle.velocity[1]),
+            this_particle.position[2] + (delta_t * this_particle.velocity[2]));
+
+    }
+
     glEnd();
 
     // draw the volcano
