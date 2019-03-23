@@ -118,32 +118,87 @@ struct Particle {
 
             }
         }
-
     }
-
-
 
 };
 
 vector<Particle> particles;
 
-float map_to_range(float x, float old_lo, float old_hi, float new_lo, float new_hi) {
+vec3 Get_Particle_Color(float duration) {
 
-    x -= old_lo;                // bring lo down to 0
-    x /= (old_hi - old_lo);     // map to range 0.0 <= x <= 1
+/*
+    if (0.0f <= duration && duration <= 0.1f) {
 
-    x *= (new_hi - new_lo);     // map to range new_lo <= x <= new_hi
-    x += new_lo;                // bring low up to new_lo
+        return YELLOW;
+    }
 
-    return x;
-}
+    else if (0.1f <= duration && duration <= 1.5f) {
 
-float random(float lo_bound = 0.0f, float hi_bound = 1.0f) {
+        vec3 interpolated(
+            map_to_range(duration, 0.1f, 1.5f, YELLOW[0], RED[0]),
+            map_to_range(duration, 0.1f, 1.5f, YELLOW[1], RED[1]),
+            map_to_range(duration, 0.1f, 1.5f, YELLOW[2], RED[2]));
 
-    return map_to_range(
-        rand(),
-        0.0f, static_cast<float> (RAND_MAX),    // range of rand()
-        lo_bound, hi_bound);                    // desired range
+        return interpolated;
+    }
+*/
+
+    if (0.0f <= duration && duration <= 0.05f) {
+
+        return CYAN;
+    }
+
+    else if (0.05f <= duration && duration <= 0.1f) {
+
+        vec3 interpolated(
+            map_to_range(duration, 0.05f, 0.1f, CYAN[0], WHITE[0]),
+            map_to_range(duration, 0.05f, 0.1f, CYAN[1], WHITE[1]),
+            map_to_range(duration, 0.05f, 0.1f, CYAN[2], WHITE[2]));
+            
+        return interpolated;
+    }
+
+    else if (0.1f <= duration && duration <= 0.7f) {
+
+        vec3 interpolated(
+            map_to_range(duration, 0.1f, 0.7f, WHITE[0], YELLOW[0]),
+            map_to_range(duration, 0.1f, 0.7f, WHITE[1], YELLOW[1]),
+            map_to_range(duration, 0.1f, 0.7f, WHITE[2], YELLOW[2]));
+            
+        return interpolated;
+    }
+
+    else if (0.7f <= duration && duration <= 1.5f) {
+
+        vec3 interpolated(
+            map_to_range(duration, 0.7f, 1.5f, YELLOW[0], RED[0]),
+            map_to_range(duration, 0.7f, 1.5f, YELLOW[1], RED[1]),
+            map_to_range(duration, 0.7f, 1.5f, YELLOW[2], RED[2]));
+            
+        return interpolated;
+    }
+
+    else if (1.5f <= duration && duration <= 2.0f) {
+
+        return RED;
+    }
+
+    else if (2.0f <= duration && duration <= 3.0f) {
+
+        vec3 interpolated(
+            map_to_range(duration, 2.0f, 3.0f, RED[0], GRAY[0]),
+            map_to_range(duration, 2.0f, 3.0f, RED[1], GRAY[1]),
+            map_to_range(duration, 2.0f, 3.0f, RED[2], GRAY[2]));
+
+        return interpolated;
+    }
+
+    else {
+
+        assert(3.0f <= duration);
+        return GRAY;
+
+    }
 }
 
 // Generates n random particles,
