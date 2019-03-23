@@ -347,14 +347,10 @@ void application::draw_event()
             // handle collisions with ground
             this_particle.Handle_Collision(0.5, 0.5);
 
-            // update duration of particle
-            this_particle.duration += h;
-
+            // update color of particle based on duration
+            this_particle.color = Get_Particle_Color(this_particle.duration);
         }
 
-        //
-        // UPDATE THE COLOR OF THE PARTICLE DYNAMICALLY
-        //
     }
 
     glLineWidth(2.0);
