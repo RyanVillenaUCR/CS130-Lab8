@@ -258,6 +258,9 @@ void application::draw_event()
             // handle collisions with ground
             this_particle.Handle_Collision(0.5, 0.5);
 
+            // update duration of particle
+            this_particle.duration += h;
+
         }
 
         //
