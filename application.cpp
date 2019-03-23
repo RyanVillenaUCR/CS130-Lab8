@@ -221,6 +221,8 @@ void application::init_event()
             }
         }
     }
+
+    Add_Particles(10);
 }
 
 // triggered each time the application needs to redraw
