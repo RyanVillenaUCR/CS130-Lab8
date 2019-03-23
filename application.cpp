@@ -29,6 +29,25 @@ const vec3 CYAN(0.0f, 1.0f, 1.0f);
 void draw_grid(int dim);
 void draw_obj(obj *o, const gl_image_texture_map& textures);
 
+float map_to_range(float x, float old_lo, float old_hi, float new_lo, float new_hi) {
+
+    x -= old_lo;                // bring lo down to 0
+    x /= (old_hi - old_lo);     // map to range 0.0 <= x <= 1
+
+    x *= (new_hi - new_lo);     // map to range new_lo <= x <= new_hi
+    x += new_lo;                // bring low up to new_lo
+
+    return x;
+}
+
+float random(float lo_bound = 0.0f, float hi_bound = 1.0f) {
+
+    return map_to_range(
+        rand(),
+        0.0f, static_cast<float> (RAND_MAX),    // range of rand()
+        lo_bound, hi_bound);                    // desired range
+}
+
 struct Particle {
 
     vec3 position;
