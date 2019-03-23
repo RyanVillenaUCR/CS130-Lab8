@@ -250,7 +250,6 @@ void application::draw_event()
             this_particle.Reset_Forces();
 
             // add forces
-            //this_particle.force = { 0.0f, (-1.0f) * this_particle.mass * 9.8f, 0.0f };
             this_particle.force[0] = 0.0f;
             this_particle.force[1] = -9.8f * this_particle.mass;
             this_particle.force[2] = 0.0f;
